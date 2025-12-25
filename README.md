@@ -106,5 +106,3 @@ GitHub: https://github.com/Sri-balakumar
 This project is licensed under the **MIT License**.
 
 ⭐ Star this repository if you found it useful! 
-
-add needed emoji alone and give as copy paste
