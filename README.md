@@ -82,29 +82,6 @@ voting-system/
 
 ---
 
-## Installation
-
-1. Clone the repo:
-   ```bash
-   git clone [repository-url]
-   cd voting-system
-   ```
-2. Install dependencies:
-   ```bash
-   composer install
-   ```
-3. Create MySQL database and tables (see Database Structure).  
-4. Configure database in `config.php`  
-5. Configure email SMTP in `register.php`  
-6. Create admin account:
-   ```sql
-   INSERT INTO admin (username, password) VALUES ('admin', 'your_password');
-   ```
-7. Access:
-   - User: `http://your-domain.com/`  
-   - Admin: `http://your-domain.com/admin/`
-
----
 
 ## Future Enhancements
 - Password reset & email verification  
