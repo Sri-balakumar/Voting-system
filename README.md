@@ -35,31 +35,47 @@ A **web-based online voting system** for colleges and small organizations, featu
 
 ```sql
 CREATE TABLE users (
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    username VARCHAR(255) NOT NULL,
-    email VARCHAR(255) UNIQUE NOT NULL,
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL UNIQUE,
     password VARCHAR(255) NOT NULL,
-    has_voted TINYINT(1) DEFAULT 0
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 ```
 
 **🧑‍💼 Candidates Table**
 ```sql
-CREATE TABLE candidates (
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    name VARCHAR(255) NOT NULL,
-    party VARCHAR(255),
-    votes INT DEFAULT 0
-);
+-- Create candidates table
+CREATE TABLE IF NOT EXISTS `candidates` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `party` varchar(255) DEFAULT NULL,
+  `votes` int(11) DEFAULT 0,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Insert sample candidates (optional)
+INSERT INTO `candidates` (`name`, `party`, `votes`) VALUES
+('Candidate name', 'Party name', 0),
 ```
 
 **🔑 Admin Table**
 ```sql
-CREATE TABLE admin (
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    username VARCHAR(255) NOT NULL,
-    password VARCHAR(255) NOT NULL
-);
+-- Create admin table
+CREATE TABLE IF NOT EXISTS `admin` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(100) NOT NULL UNIQUE,
+  `password` varchar(255) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Insert default admin account
+-- Username: admin
+-- Password: admin123 (Change this after first login!)
+INSERT INTO `admin` (`username`, `password`) VALUES
+('admin', 'admin123');
 ```
 
 ---
